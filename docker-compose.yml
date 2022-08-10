@@ -1,0 +1,37 @@
+services:
+  nginx:
+    image: skpr/nginx-drupal:dev-v2-latest
+    ports:
+      - "${WEB_PORT:-8080}:8080"
+      - "${MYSQL_PORT:-3306}:3306"
+      - "${CHROME_PORT:-4444}:4444"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./:/data
+
+  php-fpm:
+    image: skpr/php-fpm:8.0-dev-v2-latest
+    network_mode: service:nginx
+    volumes:
+      - ./:/data
+    environment:
+      - PHP_IDE_CONFIG=serverName=localhost
+
+  php-cli:
+    image: skpr/php-cli:8.0-dev-v2-latest
+    command: /bin/bash -c "sleep infinity"
+    network_mode: service:nginx
+    environment:
+      - DRUSH_OPTIONS_URI=${BASE_URI:-http://127.0.0.1:8080}
+      - PHP_IDE_CONFIG=serverName=localhost
+    volumes:
+      - ./:/data
+
+  mysql:
+    image: skpr/mtk-mysql-empty:latest
+    network_mode: service:nginx
+
+  chrome:
+    image: drupalci/webdriver-chromedriver:production
+    network_mode: service:nginx

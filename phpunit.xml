@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="app/core/tests/bootstrap.php" colors="true"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutChangesToGlobalState="true"
+         failOnWarning="true"
+         printerClass="\Drupal\Tests\Listeners\HtmlOutputPrinter"
+         cacheResult="false">
+  <php>
+    <ini name="error_reporting" value="32767"/>
+    <ini name="memory_limit" value="-1"/>
+    <env name="SIMPLETEST_BASE_URL" value="http://127.0.0.1:8080"/>
+    <env name="SIMPLETEST_DB" value="sqlite://localhost//dev/shm/db.sqlite"/>
+    <env name="BROWSERTEST_OUTPUT_DIRECTORY" value=""/>
+    <env name="BROWSERTEST_OUTPUT_BASE_URL" value="http://127.0.0.1:8080"/>
+    <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled"/>
+    <env name="MINK_DRIVER_CLASS" value=''/>
+    <env name="MINK_DRIVER_ARGS" value=''/>
+    <env name="MINK_DRIVER_ARGS_WEBDRIVER" value=''/>
+  </php>
+  <testsuites>
+    <testsuite name="unit">
+      <file>./app/core/tests/TestSuites/UnitTestSuite.php</file>
+    </testsuite>
+    <testsuite name="kernel">
+      <file>./app/core/tests/TestSuites/KernelTestSuite.php</file>
+    </testsuite>
+    <testsuite name="functional">
+      <file>./app/core/tests/TestSuites/FunctionalTestSuite.php</file>
+    </testsuite>
+    <testsuite name="functional-javascript">
+      <file>./app/core/tests/TestSuites/FunctionalJavascriptTestSuite.php</file>
+    </testsuite>
+    <testsuite name="build">
+      <file>./app/core/tests/TestSuites/BuildTestSuite.php</file>
+    </testsuite>
+  </testsuites>
+  <listeners>
+    <listener class="\Drupal\Tests\Listeners\DrupalListener">
+    </listener>
+  </listeners>
+  <!-- Filter for coverage reports. -->
+  <filter>
+    <whitelist>
+      <directory>./app/core/includes</directory>
+      <directory>./app/core/lib</directory>
+      <!-- Extensions can have their own test directories, so exclude those. -->
+      <directory>./app/core/modules</directory>
+      <exclude>
+        <directory>./app/core/modules/*/src/Tests</directory>
+        <directory>./app/core/modules/*/tests</directory>
+      </exclude>
+      <directory>./app/modules</directory>
+      <exclude>
+        <directory>./app/core/modules/*/src/Tests</directory>
+        <directory>./app/core/modules/*/tests</directory>
+        <directory>./app/core/modules/*/*/src/Tests</directory>
+        <directory>./app/core/modules/*/*/tests</directory>
+      </exclude>
+      <directory>./app/core/sites</directory>
+     </whitelist>
+  </filter>
+</phpunit>
