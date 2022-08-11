@@ -1,0 +1,7 @@
+/modules/contrib
+/profiles/contrib
+/themes/contrib
+/sites/default/files/
+/sites/default/settings.php
+/sites/simpletest/
+/vendor/

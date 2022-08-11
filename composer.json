@@ -1,6 +1,6 @@
 {
-    "name": "joachim-n/drupal-core-development-project",
-    "description": "Composer project for developing Drupal core",
+    "name": "mstrelan/drupal-contrib",
+    "description": "Composer project for Drupal contrib",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "repositories": [
@@ -26,6 +26,10 @@
         },
         {
             "type": "path",
+            "url": "app/composer/Plugin/Scaffold"
+        },
+        {
+            "type": "path",
             "url": "app/composer/Plugin/VendorHardening"
         },
         {
@@ -34,15 +38,16 @@
         }
     ],
     "require": {
-        "composer/installers": "^1.9",
+        "composer/installers": "^1.12",
         "drupal/core-composer-scaffold": "*",
         "drupal/drupal": "*",
         "drupal/core": "*",
+        "drush/drush": "^11"
+    },
+    "require-dev": {
         "drupal/core-dev": "*",
-        "drupal/core-recommended": "*",
-        "drush/drush": "^10.3.6 || ^11.x-dev",
-        "phpspec/prophecy-phpunit": "*",
-        "symfony/var-dumper": "^4.4 | ^5.1"
+        "mstrelan/teamcity-html": "*",
+        "phpspec/prophecy-phpunit": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -51,15 +56,19 @@
         "sort-packages": true,
         "allow-plugins": {
             "composer/installers": true,
-            "drupal/core-project-message": true,
             "drupal/core-vendor-hardening": true,
             "drupal/core-composer-scaffold": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
-    "autoload-dev": {
+    "scripts": {
+        "post-root-package-install": [
+            "mstrelan\\DrupalContrib\\ComposerScripts::gitCloneDrupalCore"
+        ]
+    },
+    "autoload": {
         "psr-4": {
-            "Drupal\\Composer\\": "app/composer"
+            "mstrelan\\DrupalContrib\\": "src/"
         }
     },
     "extra": {
@@ -68,35 +77,19 @@
                 "web-root": "app/"
             },
             "file-mapping": {
-                "[web-root]/vendor/autoload.php": "scaffold/autoload.php",
-                "[web-root]/sites/default/settings.php": "scaffold/settings.php"
+                "[web-root]/vendor/autoload.php": "assets/scaffold/files/autoload.php",
+                "[web-root]/sites/default/settings.php": "assets/scaffold/files/settings.php",
+                "[web-root]/.git/info/exclude": "assets/scaffold/files/exclude"
             }
         },
         "installer-paths": {
-            "app/core": [
-                "type:drupal-core"
-            ],
-            "app/libraries/{$name}": [
-                "type:drupal-library"
-            ],
-            "app/modules/contrib/{$name}": [
-                "type:drupal-module"
-            ],
-            "app/profiles/contrib/{$name}": [
-                "type:drupal-profile"
-            ],
-            "app/themes/contrib/{$name}": [
-                "type:drupal-theme"
-            ],
-            "drush/Commands/contrib/{$name}": [
-                "type:drupal-drush"
-            ],
-            "app/modules/custom/{$name}": [
-                "type:drupal-custom-module"
-            ],
-            "app/themes/custom/{$name}": [
-                "type:drupal-custom-theme"
-            ]
+            "app/core": ["type:drupal-core"],
+            "app/libraries/{$name}": ["type:drupal-library"],
+            "app/modules/contrib/{$name}": ["type:drupal-module"],
+            "app/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "app/themes/contrib/{$name}": ["type:drupal-theme"],
+            "app/modules/custom/{$name}": ["type:drupal-custom-module"],
+            "app/themes/custom/{$name}": ["type:drupal-custom-theme"]
         }
     }
 }
