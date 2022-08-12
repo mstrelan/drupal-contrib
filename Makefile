@@ -1,4 +1,5 @@
-DRUSH_INSTALL=drush -y site:install --account-pass=password
+DRUSH=./bin/drush
+DRUSH_INSTALL=$(DRUSH) -y site:install --account-pass=password
 GIT_SWITCH=cd app && git switch
 
 install:
@@ -14,7 +15,7 @@ umami:
 	$(DRUSH_INSTALL) demo_umami
 
 login:
-	drush -y user:login
+	$(DRUSH) -y user:login
 
 9.3:
 	$(GIT_SWITCH) 9.3.x
