@@ -63,7 +63,8 @@
     },
     "scripts": {
         "post-root-package-install": [
-            "mstrelan\\DrupalContrib\\ComposerScripts::gitCloneDrupalCore"
+            "mstrelan\\DrupalContrib\\ComposerScripts::gitCloneDrupalCore",
+            "mstrelan\\DrupalContrib\\ComposerScripts::configurePhpStorm"
         ]
     },
     "autoload": {
