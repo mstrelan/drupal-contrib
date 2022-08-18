@@ -1,4 +1,8 @@
-DRUSH=./bin/drush
+ifneq ("$(shell whoami)", "skpr")
+  EXEC=docker-compose exec php-cli
+endif
+
+DRUSH=$(EXEC) ./bin/drush
 DRUSH_INSTALL=$(DRUSH) -y site:install --account-pass=password
 GIT_SWITCH=cd app && git switch
 
