@@ -24,6 +24,7 @@ services:
     network_mode: service:nginx
     environment:
       - DRUSH_OPTIONS_URI=${BASE_URI:-http://127.0.0.1:8080}
+      - BROWSERTEST_OUTPUT_BASE_URL=${BASE_URI:-http://127.0.0.1:8080}
       - PHP_IDE_CONFIG=serverName=localhost
     volumes:
       - ./:/data
