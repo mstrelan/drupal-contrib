@@ -11,7 +11,7 @@ services:
       - ./:/data
 
   php-fpm:
-    image: skpr/php-fpm:8.0-dev-v2-latest
+    image: skpr/php-fpm:${PHP_VERSION:-8.0}-dev-v2-latest
     network_mode: service:nginx
     volumes:
       - ./:/data
@@ -19,7 +19,7 @@ services:
       - PHP_IDE_CONFIG=serverName=localhost
 
   php-cli:
-    image: skpr/php-cli:8.0-dev-v2-latest
+    image: skpr/php-cli:${PHP_VERSION:-8.0}-dev-v2-latest
     command: /bin/bash -c "sleep infinity"
     network_mode: service:nginx
     environment:
