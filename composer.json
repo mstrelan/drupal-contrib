@@ -38,10 +38,10 @@
         }
     ],
     "require": {
-        "composer/installers": "^1.12",
+        "composer/installers": "*",
+        "drupal/core": "*",
         "drupal/core-composer-scaffold": "*",
         "drupal/drupal": "*",
-        "drupal/core": "*",
         "drush/drush": "^11"
     },
     "require-dev": {
@@ -56,10 +56,10 @@
         "sort-packages": true,
         "allow-plugins": {
             "composer/installers": true,
-            "drupal/core-vendor-hardening": true,
-            "drupal/core-composer-scaffold": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
+            "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
+            "drupal/core-vendor-hardening": true,
             "phpstan/extension-installer": true
         }
     },
