@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" loadUpdateAvailability="false" notifyAboutMissingVendor="false" showQuickActionsPanel="false" synchronizationState="SYNCHRONIZE" updatePackages="false">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <interpreter name="php-cli" composer="composer" />
