@@ -4,3 +4,4 @@
 /.editorconfig
 /.gitattributes
 /composer.lock
+/.env
