@@ -19,7 +19,7 @@ jobs:
         uses: php-actions/composer@v6
         with:
           command: create-project
-          args: "mstrelan/drupal-contrib:dev-main"
+          args: "mstrelan/drupal-contrib:dev-{{ github.ref_name }}
 
       - name: Setup bats
         run: |
