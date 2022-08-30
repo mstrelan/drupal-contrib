@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Clone drupal git repo
         run: |
           git clone --depth 1 https://git.drupalcode.org/project/drupal.git app
 
