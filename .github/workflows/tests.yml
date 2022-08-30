@@ -1,0 +1,28 @@
+name: tests
+on: [push]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        drupal_version: [9.3, 9.4, 9.5, 10.0, 10.1]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup bats
+        run: |
+          brew install bats-core bats-assert bats-file
+
+      - name: Initialise environment
+        run: |
+          make start composer minimal
+
+      - name: Run tests
+        run: DRUPAL_VERSION=${{ matrix.drupal_version }} bats tests
