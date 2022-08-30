@@ -20,9 +20,7 @@ jobs:
 
       - name: Clone drupal git repo
         run: |
-          git clone --depth 1 https://git.drupalcode.org/project/drupal.git app
-          cd app
-          git fetch origin ${{ matrix.drupal_version }}.x
+          git clone --branch ${{ matrix.drupal_version }}.x --depth 1 https://git.drupalcode.org/project/drupal.git app
 
       - name: Setup bats
         run: |
