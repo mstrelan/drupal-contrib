@@ -15,12 +15,11 @@ jobs:
         drupal_version: ['9.3', '9.4', '9.5', '10.0', '10.1']
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Clone drupal git repo
-        run: |
-          git clone --branch ${{ matrix.drupal_version }}.x --depth 1 https://git.drupalcode.org/project/drupal.git app
+      - name: Create project
+        uses: php-actions/composer@v7
+        with:
+          command: create-project
+          args: mstrelan/drupal-contrib:dev-$(git branch --show-current) .
 
       - name: Setup bats
         run: |
