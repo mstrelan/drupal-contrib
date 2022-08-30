@@ -7,18 +7,21 @@ defaults:
 
 jobs:
   tests:
+    runs-on: ubuntu-latest
+
     strategy:
       fail-fast: false
       matrix:
         drupal_version: [9.3, 9.4, 9.5, 10.0, 10.1]
-    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Setup bats
         run: |
-          brew install bats-core bats-assert bats-file
+          brew tap kaos/shell
+          brew install bats-support bats-assert bats-file
 
       - name: Initialise environment
         run: |
