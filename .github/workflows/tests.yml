@@ -18,11 +18,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
-        with:
-          limit-access-to-actor: true
-
       - name: Clone drupal git repo
         run: |
           git clone --branch ${{ matrix.drupal_version }}.x --depth 1 https://git.drupalcode.org/project/drupal.git app
@@ -34,6 +29,8 @@ jobs:
 
       - name: Initialise environment
         run: |
+          cp .github/github.env .env
+          make start
           make ${{ matrix.drupal_version }}
 
       - name: Run tests
