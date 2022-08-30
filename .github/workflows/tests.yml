@@ -19,7 +19,7 @@ jobs:
         uses: php-actions/composer@v6
         with:
           command: create-project
-          args: "--ignore-platform-reqs mstrelan/drupal-contrib . dev-${{ github.ref_name }}"
+          args: "--ignore-platform-reqs mstrelan/drupal-contrib:dev-${{ github.ref_name }}"
 
       - name: Setup bats
         run: |
@@ -28,6 +28,7 @@ jobs:
 
       - name: Initialise environment
         run: |
+          cd drupal-contrib
           cp .github/github.env .env
           make ${{ matrix.drupal_version }}
 
