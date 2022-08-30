@@ -3,7 +3,8 @@ DRUPAL_VERSION="${DRUPAL_VERSION:-9.4}"
 setup() {
   DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )"
   cd "$DIR/../" || exit
-  load "/home/linuxbrew/.linuxbrew/lib/bats-assert/load.bash"
+  BREW_PREFIX="$(brew --prefix)"
+  load "${BREW_PREFIX}/lib/bats-assert/load.bash"
 }
 
 dce() {

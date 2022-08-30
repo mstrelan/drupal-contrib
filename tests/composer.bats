@@ -5,8 +5,9 @@ setup_file() {
 }
 
 setup() {
-  load "/home/linuxbrew/.linuxbrew/lib/bats-assert/load.bash"
-  load "/home/linuxbrew/.linuxbrew/lib/bats-file/load.bash"
+  BREW_PREFIX="$(brew --prefix)"
+  load "${BREW_PREFIX}/lib/bats-assert/load.bash"
+  load "${BREW_PREFIX}/lib/bats-file/load.bash"
 }
 
 dce() {
