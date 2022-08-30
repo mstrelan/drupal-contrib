@@ -29,7 +29,7 @@ jobs:
 
       - name: Initialise environment
         run: |
-          chown -R 1000:1000 .
+          sudo chown -R 1000:1000 .
           make ${{ matrix.drupal_version }}
 
       - name: Run tests
