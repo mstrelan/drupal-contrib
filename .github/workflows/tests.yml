@@ -33,7 +33,6 @@ jobs:
       - name: Initialise environment
         run: |
           cp .github/github.env .env
-          make start
           make ${{ matrix.drupal_version }}
 
       - name: Run tests
