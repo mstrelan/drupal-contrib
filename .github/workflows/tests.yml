@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        drupal_version: [9.3, 9.4, 9.5, 10.0, 10.1]
+        drupal_version: ['9.3', '9.4', '9.5', '10.0', '10.1']
 
     steps:
       - name: Checkout
@@ -21,6 +21,7 @@ jobs:
       - name: Clone drupal git repo
         run: |
           git clone --depth 1 https://git.drupalcode.org/project/drupal.git app
+          git fetch ${{ matrix.drupal_version }}.x
 
       - name: Setup bats
         run: |
