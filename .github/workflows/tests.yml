@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Create project
-        uses: php-actions/composer@v7
+        uses: php-actions/composer@v6
         with:
           command: create-project
           args: mstrelan/drupal-contrib:dev-$(git branch --show-current) .
