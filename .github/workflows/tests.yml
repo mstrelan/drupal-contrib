@@ -19,7 +19,7 @@ jobs:
         uses: php-actions/composer@v6
         with:
           command: create-project
-          args: mstrelan/drupal-contrib:dev-{{ github.ref_name }} --ignore-platform-reqs
+          args: "mstrelan/drupal-contrib:dev-{{ github.ref_name }} --ignore-platform-reqs ."
 
       - name: Setup bats
         run: |
