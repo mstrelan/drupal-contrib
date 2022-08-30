@@ -29,9 +29,6 @@ jobs:
 
       - name: Initialise environment
         run: |
-          sudo useradd -u 1000 -g 1000 skpr
-          sudo chown -R 1000:1000 .
-          sudo su - $(id -un 1000)
           make ${{ matrix.drupal_version }}
 
       - name: Run tests
