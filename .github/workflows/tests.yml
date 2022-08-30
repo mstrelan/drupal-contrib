@@ -31,6 +31,7 @@ jobs:
         run: |
           sudo chown -R 1000:1000 .
           sudo chown -R 1001:1001 app
+          sudo chown -R 1000:1000 app/vendor app/sites/default
           make ${{ matrix.drupal_version }}
 
       - name: Run tests
