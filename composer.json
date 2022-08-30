@@ -94,11 +94,5 @@
             "app/modules/custom/{$name}": ["type:drupal-custom-module"],
             "app/themes/custom/{$name}": ["type:drupal-custom-theme"]
         }
-    },
-    "archive": {
-        "exclude": [
-            "/.github",
-            "/tests"
-        ]
     }
 }
