@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        run: |
+          git clone --depth 1 https://git.drupalcode.org/project/drupal.git app
 
       - name: Setup bats
         run: |
@@ -25,7 +27,10 @@ jobs:
 
       - name: Initialise environment
         run: |
-          make start composer minimal
+          make ${{ matrix.drupal_version }}
 
       - name: Run tests
-        run: DRUPAL_VERSION=${{ matrix.drupal_version }} bats tests
+        env:
+          DRUPAL_VERSION: ${{ matrix.drupal_version }}
+        run: |
+          bats tests
