@@ -37,4 +37,5 @@ jobs:
         env:
           DRUPAL_VERSION: ${{ matrix.drupal_version }}
         run: |
+          cd drupal-contrib
           bats tests
