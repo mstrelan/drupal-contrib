@@ -11,7 +11,7 @@
 To get started run the following command:
 
 ```
-composer create-project mstrelan/drupal-contrib:dev-main
+composer create-project mstrelan/drupal-contrib
 ```
 
 ## Directory structure
@@ -59,6 +59,20 @@ a remote PHP interpreter, PHPUnit and path mappings for debugging.
 
 ## Running tests
 
+If you elected to automatically configure PhpStorm you should be able to click the green triangle
+next to each test in PhpStorm. Alternatively you can run phpunit on the command line like so:
+
+```
+docker-compose exec php-cli bash
+phpunit --filter=YourTestClass
+```
+
 ## Debugging
 
+XDebug can be enabled via the Xdebug Helper browser extension, or for CLI scripts including drush
+and phpunit, use `XDEBUG_SESSION=1`.
+
 ## Contributing
+
+Once you're up and running you'll have Drupal core checked out in the app directory. From here you
+can create a new branch for each issue that you're working on.
