@@ -65,6 +65,7 @@
     },
     "scripts": {
         "post-root-package-install": [
+            "mstrelan\\DrupalContrib\\ComposerScripts::configureEnvironment",
             "mstrelan\\DrupalContrib\\ComposerScripts::gitCloneDrupalCore",
             "mstrelan\\DrupalContrib\\ComposerScripts::configurePhpStorm"
         ]
