@@ -1,0 +1,14 @@
+ARG BASE_IMAGE
+FROM $BASE_IMAGE
+
+ARG USERNAME=skpr
+ARG UID=1000
+ARG GID=1000
+
+USER root
+
+RUN deluser skpr
+RUN adduser -D -u $UID -g $GID $USERNAME
+RUN chown -R $UID:$GID /data
+
+USER $USERNAME
