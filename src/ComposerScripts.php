@@ -22,8 +22,8 @@ class ComposerScripts {
       'UID=1000',
       'GID=1000',
     ], [
-      sprintf('UID=%d', system('id -u')),
-      sprintf('GID=%d', system('id -g')),
+      sprintf('UID=%d', static::geteuid()),
+      sprintf('GID=%d', static::getegid()),
     ], $dist));
     $io->write(file_get_contents('.env'));
   }
@@ -56,6 +56,20 @@ class ComposerScripts {
     copy('assets/scaffold/files/php.xml', '.idea/php.xml');
     copy('assets/scaffold/files/symfony2.xml', '.idea/symfony2.xml');
     copy('assets/scaffold/files/workspace.xml', '.idea/workspace.xml');
+  }
+
+  private static function geteuid(): int {
+    $tempfile = tmpfile();
+    $uid = fstat($tempfile)['uid'];
+    fclose($tempfile);
+    return $uid;
+  }
+
+  private static function getegid(): int {
+    $tempfile = tmpfile();
+    $gid = fstat($tempfile)['gid'];
+    fclose($tempfile);
+    return $gid;
   }
 
 }
