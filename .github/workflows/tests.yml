@@ -15,11 +15,6 @@ jobs:
         drupal_version: ['9.3', '9.4', '9.5', '10.0', '10.1']
 
     steps:
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
-        with:
-          limit-access-to-actor: true
-
       - name: Create project
         uses: php-actions/composer@v6
         with:
