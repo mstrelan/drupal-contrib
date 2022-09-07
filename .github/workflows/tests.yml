@@ -30,7 +30,6 @@ jobs:
         run: |
           sudo chown -R runner:runner drupal-contrib
           cd drupal-contrib
-          cp .github/github.env .env
           make ${{ matrix.drupal_version }}
 
       - name: Run tests
