@@ -16,7 +16,7 @@ composer:
 	$(EXEC) composer install
 
 start: stop-php
-	PHP_VERSION=$(PHP_VERSION) docker-compose up -d
+	PHP_VERSION=$(PHP_VERSION) docker-compose up --build -d
 
 stop:
 	docker-compose stop

@@ -9,6 +9,26 @@ use Composer\Script\Event;
 class ComposerScripts {
 
   /**
+   * Configure environment variables.
+   */
+  public static function configureEnvironment(Event $event): void {
+    if (file_exists('.env')) {
+      return;
+    }
+    $io = $event->getIO();
+    $io->write("Configuring environment");
+    $dist = file_get_contents('.env.dist');
+    file_put_contents('.env', str_replace([
+      'UID=1000',
+      'GID=1000',
+    ], [
+      sprintf('UID=%d', posix_geteuid()),
+      sprintf('GID=%d', posix_getegid()),
+    ], $dist));
+    $io->write(file_get_contents('.env'));
+  }
+
+  /**
    * Clones Drupal core in to the app directory.
    */
   public static function gitCloneDrupalCore(Event $event): void {

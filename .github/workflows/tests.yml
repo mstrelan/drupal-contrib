@@ -1,0 +1,37 @@
+name: tests
+on: [push]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        drupal_version: ['9.3', '9.4', '9.5', '10.0', '10.1']
+
+    steps:
+      - name: Create project
+        run: |
+          composer create-project --ignore-platform-reqs mstrelan/drupal-contrib:dev-${{ github.ref_name }}
+
+      - name: Initialise environment
+        run: |
+          cd drupal-contrib
+          make ${{ matrix.drupal_version }}
+
+      - name: Setup bats
+        run: |
+          brew tap kaos/shell
+          brew install bats-support bats-assert bats-file
+
+      - name: Run tests
+        env:
+          DRUPAL_VERSION: ${{ matrix.drupal_version }}
+        run: |
+          cd drupal-contrib
+          bats tests

@@ -1,5 +1,7 @@
 # Drupal contrib starter project
 
+[![tests](https://github.com/mstrelan/drupal-contrib/actions/workflows/tests.yml/badge.svg)](https://github.com/mstrelan/drupal-contrib/actions/workflows/tests.yml)
+
 ## Prerequisites
 
  * Composer
@@ -11,7 +13,7 @@
 To get started run the following command:
 
 ```
-composer create-project mstrelan/drupal-contrib:dev-main
+composer create-project mstrelan/drupal-contrib
 ```
 
 ## Directory structure
@@ -57,8 +59,40 @@ Make commands should be executed on the host machine.
 Upon first installation you'll be asked if you want to configure PhpStorm. This will configure
 a remote PHP interpreter, PHPUnit and path mappings for debugging.
 
+The remote interpreter assumes that you have Docker integration configured and working already.
+See the [Enable Docker support](https://www.jetbrains.com/help/phpstorm/docker.html#enable_docker)
+section of the PhpStorm documentation to set this up.
+
 ## Running tests
+
+If you elected to automatically configure PhpStorm you should be able to click the green triangle
+next to each test in PhpStorm.
+
+Alternatively you can run phpunit on the command line like so:
+
+```
+docker-compose exec php-cli bash
+phpunit app/core/tests/Drupal/Tests/Core/DrupalKernel/
+```
 
 ## Debugging
 
+Xdebug can be enabled for HTTP requests via the Xdebug helper browser extension:
+  
+  * Firefox - [Xdebug Helper for Firefox](https://addons.mozilla.org/en-US/firefox/addon/xdebug-helper-for-firefox/)
+  * Chrome - [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc)
+
+For CLI scripts including drush and phpunit, use `XDEBUG_SESSION=1`. For example:
+
+You can also toggle Xdebug for debugging tests directly in PhpStorm by clicking the Run Test
+button next to a test and choosing Debug.
+
+```
+docker-compose exec php-cli bash
+XDEBUG_SESSION=1 phpunit app/core/tests/Drupal/Tests/Core/DrupalTest.php --filter=testSetContainer
+```
+
 ## Contributing
+
+Once you're up and running you'll have Drupal core checked out in the app directory. From here you
+can create a new branch for each issue that you're working on.

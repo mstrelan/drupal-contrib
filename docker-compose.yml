@@ -12,7 +12,13 @@ services:
       - ./:/data
 
   php-fpm:
-    image: skpr/php-fpm:${PHP_VERSION:-8.0}-dev-v2-latest
+    build:
+      args:
+        BASE_IMAGE: skpr/php-fpm:${PHP_VERSION:-8.0}-dev-v2-latest
+        USERNAME: ${USERNAME:-skpr}
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+      context: ./.docker/php
     network_mode: service:nginx
     volumes:
       - ./:/data
@@ -20,7 +26,13 @@ services:
       - PHP_IDE_CONFIG=serverName=localhost
 
   php-cli:
-    image: skpr/php-cli:${PHP_VERSION:-8.0}-dev-v2-latest
+    build:
+      args:
+        BASE_IMAGE: skpr/php-cli:${PHP_VERSION:-8.0}-dev-v2-latest
+        USERNAME: ${USERNAME:-skpr}
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+      context: ./.docker/php
     command: /bin/bash -c "sleep infinity"
     network_mode: service:nginx
     environment:
