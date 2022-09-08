@@ -18,7 +18,7 @@
     <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled"/>
     <env name="MINK_DRIVER_CLASS" value=""/>
     <env name="MINK_DRIVER_ARGS" value=""/>
-    <env name="MINK_DRIVER_ARGS_WEBDRIVER" value='["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--disable-gpu","--headless", "--no-sandbox", "--disable-dev-shm-usage"], "w3c": false}}, "http://127.0.0.1:9515"]'/>
+    <env name="MINK_DRIVER_ARGS_WEBDRIVER" value='["chrome", {"browserName":"chrome", "goog:chromeOptions":{"args":["--headless", "--no-sandbox", "--disable-dev-shm-usage"], "w3c": false}}, "http://127.0.0.1:4444/wd/hub"]'/>
   </php>
   <testsuites>
     <testsuite name="unit">

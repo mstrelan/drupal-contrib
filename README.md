@@ -78,7 +78,7 @@ phpunit app/core/tests/Drupal/Tests/Core/DrupalKernel/
 ## Debugging
 
 Xdebug can be enabled for HTTP requests via the Xdebug helper browser extension:
-  
+
   * Firefox - [Xdebug Helper for Firefox](https://addons.mozilla.org/en-US/firefox/addon/xdebug-helper-for-firefox/)
   * Chrome - [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc)
 
@@ -91,6 +91,14 @@ button next to a test and choosing Debug.
 docker-compose exec php-cli bash
 XDEBUG_SESSION=1 phpunit app/core/tests/Drupal/Tests/Core/DrupalTest.php --filter=testSetContainer
 ```
+
+## Debugging WebDriver tests with Selenium and VNC
+
+The `.env.dist` file contains examples for how to configure the `selenium` service to use either
+Chrome or Firefox in debug mode. This exposes a VNC port (default 5900) that you can connect to
+in order to see tests running in the browser. Using a VNC client such as Remmina or VNC Viewer,
+simply connect to port `127.0.0.1:5900` with the password `secret`. If you've changed the `VNC_PORT`
+environment variable be sure to connect to that port instead.
 
 ## Contributing
 
