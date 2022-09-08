@@ -18,7 +18,7 @@ composer create-project mstrelan/drupal-contrib
 
 ### Manual installation
 
-You can install to project manually without php or composer on your host machine.
+You can install this project manually without php or composer on your host machine.
 
 ```
 git clone git@github.com:mstrelan/drupal-contrib.git
