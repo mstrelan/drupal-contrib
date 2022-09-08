@@ -1,3 +1,5 @@
+#!/usr/bin/make -f
+
 DC=docker compose
 
 ifneq ("$(shell whoami)", "skpr")
