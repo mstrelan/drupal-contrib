@@ -17,11 +17,14 @@ composer:
 	rm -rf composer.lock vendor app/vendor
 	$(EXEC) composer install
 
-start: stop
+start: stop-php
 	PHP_VERSION=$(PHP_VERSION) $(DC) up --build -d
 
 stop:
 	$(DC) stop
+
+stop-php:
+	$(DC) stop php-cli php-fpm
 
 minimal:
 	$(DRUSH_INSTALL) minimal
