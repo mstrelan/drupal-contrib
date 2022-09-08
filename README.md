@@ -1,5 +1,7 @@
 # Drupal contrib starter project
 
+[![tests](https://github.com/mstrelan/drupal-contrib/actions/workflows/tests.yml/badge.svg)](https://github.com/mstrelan/drupal-contrib/actions/workflows/tests.yml)
+
 ## Prerequisites
 
  * Composer
