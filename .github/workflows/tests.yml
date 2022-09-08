@@ -19,15 +19,15 @@ jobs:
         run: |
           composer create-project --ignore-platform-reqs mstrelan/drupal-contrib:dev-${{ github.ref_name }}
 
-      - name: Setup bats
-        run: |
-          brew tap kaos/shell
-          brew install bats-support bats-assert bats-file
-
       - name: Initialise environment
         run: |
           cd drupal-contrib
           make ${{ matrix.drupal_version }}
+
+      - name: Setup bats
+        run: |
+          brew tap kaos/shell
+          brew install bats-support bats-assert bats-file
 
       - name: Run tests
         env:
