@@ -22,8 +22,8 @@ class ComposerScripts {
       'UID=1000',
       'GID=1000',
     ], [
-      sprintf('UID=%d', system('id -u')),
-      sprintf('GID=%d', system('id -g')),
+      sprintf('UID=%d', posix_geteuid()),
+      sprintf('GID=%d', posix_getegid()),
     ], $dist));
     $io->write(file_get_contents('.env'));
   }
