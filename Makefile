@@ -1,7 +1,7 @@
-#!/usr/bin/make -f
+DC=docker compose
 
 ifneq ("$(shell whoami)", "skpr")
-  EXEC=docker-compose exec -T php-cli
+  EXEC=$(DC) exec -T php-cli
 endif
 
 DRUSH=$(EXEC) ./bin/drush
@@ -15,14 +15,11 @@ composer:
 	rm -rf composer.lock vendor app/vendor
 	$(EXEC) composer install
 
-start: stop-php
-	PHP_VERSION=$(PHP_VERSION) docker-compose up --build -d
+start: stop
+	PHP_VERSION=$(PHP_VERSION) $(DC) up --build -d
 
 stop:
-	docker-compose stop
-
-stop-php:
-	docker-compose stop php-cli php-fpm
+	$(DC) stop
 
 minimal:
 	$(DRUSH_INSTALL) minimal
