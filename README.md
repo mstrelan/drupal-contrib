@@ -27,8 +27,6 @@ cd drupal-contrib
 make init start clean
 ```
 
-You may need to edit the .env file to set your UID and GID.
-
 ## Directory structure
 
 * **app/** - this is the web root. The Drupal repo will be checked out here.
