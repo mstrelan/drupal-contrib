@@ -14,6 +14,7 @@ To get started run the following command:
 
 ```
 composer create-project mstrelan/drupal-contrib
+make start clean
 ```
 
 ### Manual installation
@@ -23,9 +24,7 @@ You can install this project manually without php or composer on your host machi
 ```
 git clone git@github.com:mstrelan/drupal-contrib.git
 cd drupal-contrib
-make start
-docker-compose exec php-cli composer run post-root-package-install
-make clean
+make init start clean
 ```
 
 You may need to edit the .env file to set your UID and GID.
@@ -56,6 +55,7 @@ The following services are available:
 
 Make commands should be executed on the host machine.
 
+* `init` - initialises the project for the first time
 * `clean` - runs composer install, installs minimal profile and provides a one-time login link
 * `start` - starts the stack
 * `stop` - stops the stack
