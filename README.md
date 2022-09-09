@@ -14,6 +14,7 @@ To get started run the following command:
 
 ```
 composer create-project mstrelan/drupal-contrib
+cd drupal-contrib
 make start clean
 ```
 
