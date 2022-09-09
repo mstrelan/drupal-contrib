@@ -81,4 +81,4 @@ php8.1:
 	cp -R assets/scaffold/.idea/ .idea/
 
 app:
-	git clone git@git.drupal.org:project/drupal.git app/
+	git clone https://git.drupalcode.org/project/drupal.git app/
