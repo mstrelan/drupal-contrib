@@ -4,8 +4,8 @@
 
 ## Prerequisites
 
- * Composer
  * Docker / Docker compose
+ * Composer (optional)
  * PhpStorm (optional)
 
 ## Getting started
@@ -14,6 +14,18 @@ To get started run the following command:
 
 ```
 composer create-project mstrelan/drupal-contrib
+cd drupal-contrib
+make start clean
+```
+
+### Manual installation
+
+You can install this project manually without php or composer on your host machine.
+
+```
+git clone git@github.com:mstrelan/drupal-contrib.git
+cd drupal-contrib
+make init start clean
 ```
 
 ## Directory structure
@@ -42,6 +54,7 @@ The following services are available:
 
 Make commands should be executed on the host machine.
 
+* `init` - initialises the project for the first time
 * `clean` - runs composer install, installs minimal profile and provides a one-time login link
 * `start` - starts the stack
 * `stop` - stops the stack
