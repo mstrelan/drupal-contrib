@@ -10,6 +10,7 @@ services:
       - "host.docker.internal:host-gateway"
     volumes:
       - ./:/data
+      - ./.docker/nginx/drupal.conf:/etc/nginx/conf.d/location/00-drupal.conf
 
   php-fpm:
     build:
