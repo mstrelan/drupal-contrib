@@ -59,6 +59,14 @@ switch:
 	$(GIT_SWITCH) 10.1.x
 	make clean
 
+10.2: php8.2
+	$(GIT_SWITCH) 10.2.x
+	make clean
+
+11.x: php8.2
+	$(GIT_SWITCH) 11.x
+	make clean
+
 php7.4:
 	make start -e PHP_VERSION=7.4
 
@@ -67,3 +75,6 @@ php8.0:
 
 php8.1:
 	make start -e PHP_VERSION=8.1
+
+php8.2:
+	make start -e PHP_VERSION=8.2
