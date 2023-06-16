@@ -6,6 +6,7 @@ services:
       - "${MYSQL_PORT:-3306}:3306"
       - "${SELENIUM_PORT:-4444}:4444"
       - "${VNC_PORT:-5900}:5900"
+      - "${NODE_PORT:-3000}:3000"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
@@ -51,3 +52,10 @@ services:
   selenium:
     image: ${SELENIUM_IMAGE:-selenium/standalone-chrome}
     network_mode: service:nginx
+
+  node:
+    image: skpr/node:18-v2-latest
+    command: /bin/bash -c "sleep infinity"
+    network_mode: service:nginx
+    volumes:
+      - ./:/data
