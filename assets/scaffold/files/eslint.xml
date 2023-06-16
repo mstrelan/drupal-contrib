@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EslintConfiguration">
+    <custom-configuration-file used="true" path="$PROJECT_DIR$/app/core/.eslintrc.json" />
+    <extra-options value="--no-error-on-unmatched-pattern --ignore-pattern=&quot;*.es6.js&quot; --resolve-plugins-relative-to=$_WEB_ROOT/core --ext=.js,.yml" />
+    <files-pattern value="{**/*,*}.{js,yml}" />
+    <option name="fix-on-save" value="true" />
+  </component>
+</project>
