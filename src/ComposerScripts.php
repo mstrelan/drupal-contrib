@@ -53,9 +53,13 @@ class ComposerScripts {
     }
     $io->write("Configuring PhpStorm");
     mkdir('.idea');
+    mkdir('.idea/inspectionProfiles');
+    mkdir('.idea/jsLinters');
     copy('assets/scaffold/files/php.xml', '.idea/php.xml');
     copy('assets/scaffold/files/symfony2.xml', '.idea/symfony2.xml');
     copy('assets/scaffold/files/workspace.xml', '.idea/workspace.xml');
+    copy('assets/scaffold/files/Project_Default.xml', '.idea/inspectionProfiles/Project_Default.xml');
+    copy('assets/scaffold/files/eslint.xml', '.idea/jsLinters/eslint.xml');
   }
 
 }

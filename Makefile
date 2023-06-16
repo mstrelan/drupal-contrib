@@ -2,6 +2,7 @@
 
 ifneq ("$(shell whoami)", "skpr")
   EXEC=docker-compose exec -T php-cli
+  NODE_EXEC=docker-compose exec -T node
 endif
 
 DRUSH=$(EXEC) ./bin/drush
@@ -9,11 +10,15 @@ DRUSH_INSTALL=$(DRUSH) -y site:install --account-pass=password
 GIT_SWITCH=cd app && git switch
 PHP_VERSION=8.2
 
-clean: composer minimal login
+clean: composer node minimal login
 
 composer:
 	rm -rf composer.lock vendor app/vendor
 	$(EXEC) composer install
+
+node:
+	rm -rf app/core/node_modules
+	$(NODE_EXEC) yarn install --cwd=/data/app/core
 
 start: stop-php
 	PHP_VERSION=$(PHP_VERSION) docker-compose up --build -d
