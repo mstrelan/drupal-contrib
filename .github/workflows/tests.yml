@@ -24,6 +24,9 @@ jobs:
           cd drupal-contrib
           make ${{ matrix.drupal_version }}
 
+      - name: Setup homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
       - name: Setup bats
         run: |
           brew tap kaos/shell
