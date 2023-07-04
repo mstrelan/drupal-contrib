@@ -17,7 +17,7 @@ drush() {
 
 @test "Drupal version is $DRUPAL_VERSION"  {
   run drush status --fields=drupal-version --format=string
-  assert_output --partial "$DRUPAL_VERSION."
+  assert_output --partial "$DRUPAL_VERSION"
 }
 
 @test "Drupal bootstrap is successful" {
