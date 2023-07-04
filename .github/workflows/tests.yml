@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        drupal_version: ['9.5', '10.0', '10.1', '10.2', '11.x']
+        drupal_version: ['9.5', '10.0', '10.1', '11.x']
 
     steps:
       - name: Create project
