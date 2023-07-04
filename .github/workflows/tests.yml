@@ -34,7 +34,7 @@ jobs:
 
       - name: Run tests
         env:
-          DRUPAL_VERSION: ${{ matrix.drupal_version }}
+          DRUPAL_VERSION: ${{ matrix.drupal_version == '11.x' && '11.0-dev' || matrix.drupal_version }}
         run: |
           cd drupal-contrib
           bats tests
