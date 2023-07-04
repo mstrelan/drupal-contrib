@@ -11,7 +11,7 @@ setup() {
 }
 
 dce() {
-  docker-compose exec -T php-cli "$@"
+  docker compose exec -T php-cli "$@"
 }
 
 @test "Composer packages are installed"  {

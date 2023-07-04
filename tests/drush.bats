@@ -8,7 +8,7 @@ setup() {
 }
 
 dce() {
-  docker-compose exec -T php-cli "$@"
+  docker compose exec -T php-cli "$@"
 }
 
 drush() {
