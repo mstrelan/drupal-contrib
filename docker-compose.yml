@@ -45,9 +45,27 @@ services:
       - ./:/data
 
   mysql:
-    image: skpr/mtk-mysql-empty:latest
+    image: mysql:latest
     network_mode: service:nginx
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_USER: local
+      MYSQL_PASSWORD: local
+      MYSQL_DATABASE: local
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysql", "-e", "USE local;" ]
+      interval: 1s
+      retries: 30
 
   selenium:
     image: ${SELENIUM_IMAGE:-selenium/standalone-chrome}
     network_mode: service:nginx
+
+volumes:
+  mysql-data:
+    driver: local
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
