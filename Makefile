@@ -13,7 +13,7 @@ endif
 DRUSH=$(EXEC) ./bin/drush
 DRUSH_INSTALL=$(DRUSH) -y site:install --account-pass=password
 GIT_SWITCH=cd app && git switch
-PHP_VERSION=8.2
+PHP_VERSION=8.3
 
 clean: composer minimal login
 
@@ -69,7 +69,7 @@ switch:
 	$(GIT_SWITCH) 10.2.x
 	make clean
 
-11.x: php8.2
+11.x: php8.3
 	$(GIT_SWITCH) 11.x
 	make clean
 
@@ -84,3 +84,6 @@ php8.1:
 
 php8.2:
 	make start -e PHP_VERSION=8.2
+
+php8.3:
+	make start -e PHP_VERSION=8.3
