@@ -19,7 +19,7 @@ clean: composer minimal login
 
 composer:
 	rm -rf composer.lock vendor app/vendor
-	$(EXEC) composer install
+	$(EXEC) composer install --ignore-platform-req=php
 
 start: stop-php
 	PHP_VERSION=$(PHP_VERSION) $(DOCKER_COMPOSE) up --build -d
