@@ -22,7 +22,7 @@ composer:
 	$(EXEC) composer install
 
 start: stop-php
-	PHP_VERSION=$(PHP_VERSION) $(DOCKER_COMPOSE) up --build -d
+	PHP_VERSION=$(PHP_VERSION) $(DOCKER_COMPOSE) up --build -d --wait
 
 stop:
 	$(DOCKER_COMPOSE) stop
