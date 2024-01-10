@@ -16,21 +16,23 @@ phpunit() {
 }
 
 @test "Drupal unit test"  {
-  run phpunit app/core/tests/Drupal/Tests/Core/DrupalTest.php
-  assert_output --partial "OK"
+  run phpunit app/core/tests/Drupal/Tests/UnitTestCaseTest.php
+  assert_success
 }
 
 @test "Drupal kernel test" {
-  run phpunit app/core/tests/Drupal/KernelTests/KernelTestBaseTest.php
-  assert_output --partial "OK"
+  run phpunit app/core/tests/Drupal/KernelTests/KernelTestBaseTest.php --filter=testBootEnvironment
+  assert_success
 }
 
 @test "Drupal functional test" {
-  run phpunit app/core/tests/Drupal/FunctionalTests/BrowserTestBaseTest.php
-  assert_output --partial "OK"
+  run phpunit app/core/tests/Drupal/FunctionalTests/BrowserTestBaseTest.php --filter=testGoTo
+  assert_success
+  assert_output --partial "HTML output was generated"
 }
 
 @test "Drupal functional javascript test" {
-  run phpunit app/core/tests/Drupal/FunctionalJavascriptTests/BrowserWithJavascriptTest.php
-  assert_output --partial "OK"
+  run phpunit app/core/tests/Drupal/FunctionalJavascriptTests/BrowserWithJavascriptTest.php --filter=testJavascript
+  assert_success
+  assert_output --partial "HTML output was generated"
 }
