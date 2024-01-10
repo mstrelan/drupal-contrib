@@ -32,7 +32,7 @@ phpunit() {
 }
 
 @test "Drupal functional javascript test" {
-  run phpunit app/core/tests/Drupal/FunctionalJavascriptTests/BrowserWithJavascriptTest.php --filter=testJavascript
+  run phpunit app/core/tests/Drupal/FunctionalJavascriptTests/BrowserWithJavascriptTest.php
   assert_success
   assert_output --partial "HTML output was generated"
 }
