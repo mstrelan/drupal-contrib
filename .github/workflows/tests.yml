@@ -58,6 +58,9 @@ jobs:
           composer create-project --ignore-platform-reqs mstrelan/drupal-contrib:dev-${{ github.ref_name }}
 
       - name: Initialise environment
+        env:
+          SELENIUM_IMAGE: ${{ matrix.image }}
+          MINK_DRIVER_ARGS_WEBDRIVER: ${{ matrix.image == 'drupalci/chromedriver:production' && '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage"]}}, "http://127.0.0.1:9515"]' || matrix.image == 'selenium/standalone-chrome:111.0' && '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage"]}}, "http://127.0.0.1:4444/wd/hub"]' || matrix.image == 'selenium/standalone-firefox:111.0' && '["firefox", {"browserName":"firefox"}, "http://127.0.0.1:4444/wd/hub"]' || ''}}
         run: |
           cd drupal-contrib
           make 11.x
@@ -71,9 +74,6 @@ jobs:
           brew install bats-support bats-assert bats-file
 
       - name: Run tests
-        env:
-          SELENIUM_IMAGE: ${{ matrix.image }}
-          MINK_DRIVER_ARGS_WEBDRIVER: ${{ matrix.drupal_version == 'drupalci/chromedriver:production' && '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage"]}}, "http://127.0.0.1:9515"]' || matrix.drupal_version == 'selenium/standalone-chrome:111.0' && '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage"]}}, "http://127.0.0.1:4444/wd/hub"]' || matrix.drupal_version == 'selenium/standalone-firefox:111.0' && '["firefox", {"browserName":"firefox"}, "http://127.0.0.1:4444/wd/hub"]'}}
         run: |
           cd drupal-contrib
           bats tests/phpunit.bats
