@@ -43,3 +43,37 @@ jobs:
         run: |
           cd drupal-contrib
           bats tests
+
+  browser-tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ['drupalci/chromedriver:production', 'selenium/standalone-chrome:111.0', 'selenium/standalone-firefox:111.0']
+
+    steps:
+      - name: Create project
+        run: |
+          composer create-project --ignore-platform-reqs mstrelan/drupal-contrib:dev-${{ github.ref_name }}
+
+      - name: Initialise environment
+        env:
+          SELENIUM_IMAGE: ${{ matrix.image }}
+          MINK_DRIVER_ARGS_WEBDRIVER: ${{ matrix.image == 'drupalci/chromedriver:production' && '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage"]}}, "http://127.0.0.1:9515"]' || matrix.image == 'selenium/standalone-chrome:111.0' && '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage"]}}, "http://127.0.0.1:4444/wd/hub"]' || matrix.image == 'selenium/standalone-firefox:111.0' && '["firefox", {"browserName":"firefox"}, "http://127.0.0.1:4444/wd/hub"]' || ''}}
+        run: |
+          cd drupal-contrib
+          make 11.x
+
+      - name: Setup homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Setup bats
+        run: |
+          brew tap kaos/shell
+          brew install bats-support bats-assert bats-file
+
+      - name: Run tests
+        run: |
+          cd drupal-contrib
+          bats tests/phpunit.bats

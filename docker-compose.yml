@@ -49,5 +49,5 @@ services:
     network_mode: service:nginx
 
   selenium:
-    image: ${SELENIUM_IMAGE:-selenium/standalone-chrome:111.0}
+    image: ${SELENIUM_IMAGE:-drupalci/chromedriver:production}
     network_mode: service:nginx
