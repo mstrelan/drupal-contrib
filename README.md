@@ -100,6 +100,11 @@ in order to see tests running in the browser. Using a VNC client such as Remmina
 simply connect to port `127.0.0.1:5900` with the password `secret`. If you've changed the `VNC_PORT`
 environment variable be sure to connect to that port instead.
 
+## Mailpit
+
+The mailpit service is available and configured to capture email sent from the site. This can be
+accessed at http://localhost:8025. For more info see https://github.com/axllent/mailpit.
+
 ## Contributing
 
 Once you're up and running you'll have Drupal core checked out in the app directory. From here you
