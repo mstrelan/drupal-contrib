@@ -73,6 +73,10 @@ switch:
 	$(GIT_SWITCH) 10.3.x
 	make clean
 
+10.4: php8.3
+	$(GIT_SWITCH) 10.4.x
+	make clean
+
 11.x: php8.3
 	$(GIT_SWITCH) 11.x
 	make clean
