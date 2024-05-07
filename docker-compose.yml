@@ -41,9 +41,12 @@ services:
     network_mode: service:nginx
     environment:
       - DRUSH_OPTIONS_URI=${BASE_URI:-http://127.0.0.1:8080}
+      - PHP_IDE_CONFIG=serverName=localhost
+      - SIMPLETEST_BASE_URL=${SIMPLETEST_BASE_URL:-http://127.0.0.1:8080}
+      - SIMPLETEST_DB=${SIMPLETEST_DB:-mysql://local:local@127.0.0.1/local}
+      - BROWSERTEST_OUTPUT_DIRECTORY=${BROWSERTEST_OUTPUT_DIRECTORY:-/tmp}
       - BROWSERTEST_OUTPUT_BASE_URL=${BASE_URI:-http://127.0.0.1:8080}
       - MINK_DRIVER_ARGS_WEBDRIVER
-      - PHP_IDE_CONFIG=serverName=localhost
     volumes:
       - ./:/data
       - ./.docker/php/custom.ini:/etc/php/conf.d/99-custom.ini
