@@ -6,6 +6,8 @@ services:
       - "${MYSQL_PORT:-3306}:3306"
       - "${SELENIUM_PORT:-4444}:4444"
       - "${VNC_PORT:-5900}:5900"
+      - "${SMTP_PORT:-1025}:1025"
+      - "${MAIL_PORT:-8025}:8025"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
@@ -23,6 +25,7 @@ services:
     network_mode: service:nginx
     volumes:
       - ./:/data
+      - ./.docker/php/custom.ini:/etc/php/conf.d/99-custom.ini
     environment:
       - PHP_IDE_CONFIG=serverName=localhost
 
@@ -43,6 +46,7 @@ services:
       - PHP_IDE_CONFIG=serverName=localhost
     volumes:
       - ./:/data
+      - ./.docker/php/custom.ini:/etc/php/conf.d/99-custom.ini
 
   mysql:
     image: mysql:latest
@@ -59,4 +63,8 @@ services:
 
   selenium:
     image: ${SELENIUM_IMAGE:-selenium/standalone-chrome:111.0}
+    network_mode: service:nginx
+
+  mail:
+    image: axllent/mailpit
     network_mode: service:nginx
