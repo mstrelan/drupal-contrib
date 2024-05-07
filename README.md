@@ -72,7 +72,7 @@ Alternatively you can run phpunit on the command line like so:
 
 ```
 docker-compose exec php-cli bash
-phpunit app/core/tests/Drupal/Tests/Core/DrupalKernel/
+phpunit -c app/core/phpunit.xml.dist app/core/tests/Drupal/Tests/Core/DrupalKernel/
 ```
 
 ## Debugging
