@@ -15,7 +15,7 @@
   </component>
   <component name="PhpUnit">
     <phpunit_settings>
-      <phpunit_by_interpreter interpreter_id="f58849c8-e0cd-4acc-973b-98da73eaafb1" configuration_file_path="/data/phpunit.xml" custom_loader_path="/data/vendor/autoload.php" phpunit_phar_path="" use_configuration_file="true" />
+      <phpunit_by_interpreter interpreter_id="f58849c8-e0cd-4acc-973b-98da73eaafb1" configuration_file_path="/data/app/core/phpunit.xml.dist" custom_loader_path="/data/vendor/autoload.php" phpunit_phar_path="" use_configuration_file="true" />
     </phpunit_settings>
   </component>
 </project>
