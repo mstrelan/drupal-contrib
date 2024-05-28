@@ -60,7 +60,8 @@
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
             "drupal/core-vendor-hardening": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "php-http/discovery": true
         }
     },
     "scripts": {
