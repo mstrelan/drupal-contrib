@@ -51,7 +51,7 @@ Make commands should be executed on the host machine.
 * `umami` - installs Drupal with the demo_umami profile
 * `login` - gets a one-time login link
 * `switch` - switches branch, e.g.  `make BRANCH=9.3 switch`
-* `10.2|10.3|10.4|11.0|11.x` - provides a clean environment with the specified Drupal version
+* `10.2|10.3|10.4|10.5|11.0|11.1|11.x` - provides a clean environment with the specified Drupal version
 * `php8.1|php8.2|php8.3` - starts the stack with the specified php version
 
 ## PhpStorm configuration
