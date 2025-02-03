@@ -33,6 +33,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Configure project
+        run: |
+          composer run post-root-package-install --no-interaction
+
       - name: Initialise environment
         run: |
           make ${{ matrix.drupal_version }}
