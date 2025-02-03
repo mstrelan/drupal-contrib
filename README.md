@@ -54,7 +54,7 @@ Make commands should be executed on the host machine.
 * `phpstan` - runs phpstan for core
 * `phpstan-baseline` - generates phpstan baseline for core
 * `10.2|10.3|10.4|10.5|11.0|11.1|11.x` - provides a clean environment with the specified Drupal version
-* `php8.1|php8.2|php8.3` - starts the stack with the specified php version
+* `php8.1|php8.2|php8.3|php8.4` - starts the stack with the specified php version
 
 ## PhpStorm configuration
 
