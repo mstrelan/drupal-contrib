@@ -76,6 +76,11 @@
             "mstrelan\\DrupalContrib\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Drupal\\PHPStan\\Rules\\": "app/core/tests/PHPStan/Rules"
+        }
+    },
     "extra": {
         "drupal-scaffold": {
             "locations": {

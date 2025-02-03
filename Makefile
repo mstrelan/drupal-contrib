@@ -8,6 +8,7 @@ endif
 
 ifneq ("$(shell whoami)", "skpr")
   EXEC=$(DOCKER_COMPOSE) exec -T php-cli
+  EXEC_APP=$(DOCKER_COMPOSE) exec -w /data/app -T php-cli
 endif
 
 DRUSH=$(EXEC) ./bin/drush
@@ -44,6 +45,12 @@ login:
 
 switch:
 	$(GIT_SWITCH) $(BRANCH)
+
+phpstan:
+	$(EXEC_APP) /data/bin/phpstan --configuration=./core/phpstan.neon.dist --memory-limit=1G
+
+phpstan-baseline:
+	$(EXEC_APP) /data/bin/phpstan --configuration=./core/phpstan.neon.dist --generate-baseline=./core/.phpstan-baseline.php --memory-limit=1G
 
 9.3: php8.0
 	$(GIT_SWITCH) 9.3.x
