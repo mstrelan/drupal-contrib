@@ -11,6 +11,16 @@ defaults:
     shell: bash
 
 jobs:
+  create-project:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create project
+        run: |
+          composer create-project --ignore-platform-reqs mstrelan/drupal-contrib:dev-${{ github.ref_name }}
+          cd drupal-contrib
+          make 11.x
+
   tests:
     runs-on: ubuntu-latest
 
@@ -20,13 +30,15 @@ jobs:
         drupal_version: ['10.3', '10.4', '10.5', '11.0', '11.1', '11.x']
 
     steps:
-      - name: Create project
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure project
         run: |
-          composer create-project --ignore-platform-reqs mstrelan/drupal-contrib:dev-${{ github.ref_name }}
+          composer run post-root-package-install --no-interaction
 
       - name: Initialise environment
         run: |
-          cd drupal-contrib
           make ${{ matrix.drupal_version }}
 
       - name: Setup homebrew
@@ -41,5 +53,4 @@ jobs:
         env:
           DRUPAL_VERSION: ${{ matrix.drupal_version == '11.x' && '11.2-dev' || matrix.drupal_version }}
         run: |
-          cd drupal-contrib
           bats tests
