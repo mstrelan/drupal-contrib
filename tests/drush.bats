@@ -1,4 +1,4 @@
-DRUPAL_VERSION="${DRUPAL_VERSION:-9.4}"
+DRUPAL_VERSION="${DRUPAL_VERSION:-11.x}"
 
 setup() {
   DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )"
