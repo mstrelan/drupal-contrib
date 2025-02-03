@@ -45,6 +45,12 @@ login:
 switch:
 	$(GIT_SWITCH) $(BRANCH)
 
+phpstan:
+	$(EXEC) ./bin/phpstan --configuration=app/core/phpstan.neon.dist --memory-limit=1G
+
+phpstan-baseline:
+	$(EXEC) ./bin/phpstan --configuration=app/core/phpstan.neon.dist --generate-baseline=app/core/.phpstan-baseline.php --memory-limit=1G
+
 9.3: php8.0
 	$(GIT_SWITCH) 9.3.x
 	make clean
