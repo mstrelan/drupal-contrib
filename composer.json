@@ -33,6 +33,10 @@
             "url": "app/composer/Plugin/VendorHardening"
         },
         {
+            "type": "path",
+            "url": "app/composer/Plugin/RecipeUnpack"
+        },
+        {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
@@ -60,6 +64,7 @@
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
             "drupal/core-vendor-hardening": true,
+            "drupal/core-recipe-unpack": true,
             "phpstan/extension-installer": true,
             "php-http/discovery": true
         }
