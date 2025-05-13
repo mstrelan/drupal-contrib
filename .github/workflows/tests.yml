@@ -27,7 +27,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        drupal_version: ['10.3', '10.4', '10.5', '11.0', '11.1', '11.x']
+        drupal_version: ['10.4', '10.5', '11.1', '11.2', '11.x']
 
     steps:
       - name: Checkout
@@ -51,6 +51,6 @@ jobs:
 
       - name: Run tests
         env:
-          DRUPAL_VERSION: ${{ matrix.drupal_version == '11.x' && '11.2-dev' || matrix.drupal_version }}
+          DRUPAL_VERSION: ${{ matrix.drupal_version == '11.x' && '11.3-dev' || matrix.drupal_version }}
         run: |
           bats tests

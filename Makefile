@@ -97,6 +97,10 @@ phpstan-baseline:
 	$(GIT_SWITCH) 11.1.x
 	make clean
 
+11.2: php8.4
+	$(GIT_SWITCH) 11.2.x
+	make clean
+
 11.x: php8.4
 	$(GIT_SWITCH) 11.x
 	make clean
