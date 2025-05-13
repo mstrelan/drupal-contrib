@@ -20,6 +20,7 @@ clean: composer minimal login
 
 composer:
 	rm -rf composer.lock vendor app/vendor
+	mkdir -p app/composer/Plugin/RecipeUnpack
 	$(EXEC) composer install --ignore-platform-req=php
 
 start: stop-php
