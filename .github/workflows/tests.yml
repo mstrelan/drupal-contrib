@@ -27,7 +27,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        drupal_version: ['10.4', '10.5', '11.1', '11.2', '11.x']
+        drupal_version: ['10.5', '10.6', '11.2', '11.3', '11.x']
 
     steps:
       - name: Checkout
