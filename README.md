@@ -53,8 +53,8 @@ Make commands should be executed on the host machine.
 * `switch` - switches branch, e.g.  `make BRANCH=9.3 switch`
 * `phpstan` - runs phpstan for core
 * `phpstan-baseline` - generates phpstan baseline for core
-* `10.3|10.4|10.5|10.6|11.1|11.2|11.3|11.x` - provides a clean environment with the specified Drupal version
-* `php8.1|php8.2|php8.3|php8.4` - starts the stack with the specified php version
+* `10.3|10.4|10.5|10.6|11.1|11.2|11.3|11.x|12.x|main` - provides a clean environment with the specified Drupal version
+* `php8.1|php8.2|php8.3|php8.4|php8.5` - starts the stack with the specified php version
 
 ## PhpStorm configuration
 
